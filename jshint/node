@@ -1,0 +1,23 @@
+{
+  "bitwise": true,
+  "curly": true,
+  "eqeqeq": true,
+  "forin": true,
+  "latedef": true,
+  "newcap": true,
+  "noarg": true,
+  "notypeof": true,
+  "quotmark": "single",
+  "singleGroups": true,
+  "undef": true,
+  "unused": "var",
+  "strict": true,
+
+// Aesthetics
+  "indent": 2,
+  "maxlen": 80,
+  "maxerr": 50,
+
+// Environments
+  "node": true,
+}
