@@ -68,6 +68,13 @@ colorscheme solarized
 " 	set guioptions-=L  "remove left-hand scroll bar
 " endif
 
+"Show the 80th column
+set colorcolumn=80
+"Status line is Modified, Trailing Filename, Buffer Number
+set statusline=%M\ %-t\ (%n)
+"Always show status
+set laststatus=2
+
 augroup web-dev-files
 	autocmd Filetype javascript,html,css set tabstop=2
 	autocmd Filetype javascript,html,css set softtabstop=2
