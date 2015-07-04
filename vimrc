@@ -278,6 +278,7 @@ hi MatchParen cterm=underline ctermfg=7 ctermbg=3"
 let g:EasyMotion_startofline=0
 let g:EasyMotion_smartcase=1
 let g:EasyMotion_use_upper=1
+let g:EasyMotion_keys="ASDGHKLQWERTYUIOPZXCVBNMFJ;"
 let g:EasyMotion_enter_jump_first = 1
 
 if !exists("g:ycm_semantic_triggers")
