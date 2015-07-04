@@ -1,0 +1,69 @@
+snippet mbclass "A MonoBehaviour-derived class" b
+using UnityEngine;
+public class ${1:ClassName} : MonoBehaviour {
+	$0
+
+	void Awake() {
+	}
+
+	void Start() {
+	}
+
+	void Update() {
+	}
+}
+endsnippet
+
+snippet class "A new class" b
+${1:public} $2 class $3 {
+}
+endsnippet
+
+snippet property "An auto property" b
+public ${1:Type} ${2:PropertyName} {
+	get;
+	set;
+}
+endsnippet
+
+snippet property-with-private-field "A property that uses a private field" b
+private ${1:Type} _${2:privateName};
+
+public $1 ${2/(.+)/\u$1/}
+	get {
+		return _$2;
+	}
+	set {
+		_$2 = value;
+	}
+}
+endsnippet
+
+snippet if-not-null "Checks that a value isn't null, then calls a method on it" b
+if (${1:${VISUAL}} != null) {
+	$1.$2
+}
+$0
+endsnippet
+
+snippet foreach "For each loop" b
+foreach (${1:Type} ${2:variable} in ${3:Enumerator}) {
+	${4:// Loop}
+}
+endsnippet
+
+snippet if "If" b
+if (${1:Condition}) {
+	${VISUAL:\/\/ If}
+}
+$0
+endsnippet
+
+snippet ifelse "If-else" b
+if (${1:Condition}) {
+	${2:${VISUAL:\/\/ If}}
+} else {
+	${3:\/\/ Else}
+}
+$0
+endsnippet

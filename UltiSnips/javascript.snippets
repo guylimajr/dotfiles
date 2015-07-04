@@ -1,0 +1,120 @@
+snippet module "define this file as a module"
+'use strict';
+
+$0
+
+module.exports = `!p snip.rv = snip.basename`;
+
+endsnippet
+
+snippet mochafile "Make this file a mocha test"
+'use strict';
+
+describe('`!p snip.rv = snip.basename`', function() {
+	var expect = require('mocha').expect;
+
+	beforeEach(function() {
+	});
+
+	afterEach(function() {
+	});
+});
+
+endsnippet
+
+snippet class "Define a new class" b
+function ${1:#class#}(${2:#parameters#}) {
+}
+endsnippet
+
+snippet sub "Define a new subclass" b
+function ${1:#class#}(${3:#parameters#}) {
+	$2.prototype.call(this);
+	${4:#body#}
+}
+
+$1.prototype = Object.create(${2:#superclass#});
+
+$0
+endsnippet
+
+snippet md "declare a method" b
+${1:#object#}.prototype.${2:#method name#} = function(${3:#parameters#}) {
+	$0
+};
+endsnippet
+
+snippet fd "declare a function"
+function ${1:#name#}(${2:#parameters#}) {
+	$0
+}
+endsnippet
+
+snippet fe "function expression"
+function (${1:#parameters}) { ${VISUAL:$0} }
+endsnippet
+
+snippet prop "define a property"
+Object.defineProperty(${1:#object#}, '${2:#name#}') {
+	${3:#config#"}
+	${4:'enumerable': ${5:true}}
+});$0
+endsnippet
+
+snippet get "getter configuration"
+'get': function() {
+	${1}
+},$0
+endsnippet
+
+snippet set "getter configuration"
+'set': function(value) {
+	${1}
+},$0
+endsnippet
+
+snippet prot "the prototype of an object"
+${1:#object#}.prototype$0
+endsnippet
+
+snippet r "require a module" b
+var ${1:#module#} = require(${2:./$1});$0
+endsnippet
+
+snippet rg "require a global module" b
+var ${1:#module#} = require('${2:$1}');$0
+endsnippet
+
+snippet rl "require a relative module" b
+var ${1:#module#} = require('${2:./}${3:$1}');$0
+endsnippet
+
+snippet def "assign a default value if an object is undefined" b
+if (${1:#variable#} === 'undefined') {
+	$1 = ${2:#new value#};
+};$0
+endsnippet
+
+snippet for "for loop through an array" b
+for (var ${2:i} = 0, var ${3:len} = ${1:#array#}.length; $2 < $3; $2++) {
+	$0
+}
+endsnippet
+
+snippet forn "for 1 to n" b
+for (var ${1:i} = 0; $1 < ${2:#n#}; $1++) {
+	$0
+}
+endsnippet
+
+snippet remove "remove an object from an array" b
+${1:#array#}.splice($1.indexOf(${2:#object#}), 1);$0
+endsnippet
+
+snippet { "brackets"
+{ $1 }$0
+endsnippet
+
+snippet : "object property"
+'${1:#property#}': ${2:$1},$0
+endsnippet
