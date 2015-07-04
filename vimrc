@@ -272,7 +272,8 @@ map <leader>k <Plug>(easymotion-sol-k)
 
 hi link EasyMotionTarget ErrorMsg
 hi link EasyMotionTarget2First ErrorMsg
-hi link EasyMotionTarget2Second Special
+hi link EasyMotionTarget2Second ErrorMsg
+hi MatchParen cterm=underline ctermfg=7 ctermbg=3"
 
 let g:EasyMotion_startofline=0
 let g:EasyMotion_smartcase=1
