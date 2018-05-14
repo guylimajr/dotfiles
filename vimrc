@@ -17,25 +17,19 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 	Plugin 'gmarik/Vundle.vim'
-	Plugin 'Shougo/vimproc.vim'
 	" Movement
 	Plugin 'Lokaltog/vim-easymotion'
 	" Look 'n feel
 	Plugin 'bling/vim-airline'
 	Plugin 'altercation/vim-colors-solarized'
 	" Autocomplete
-	Plugin 'SirVer/ultisnips'
 	Plugin 'kien/ctrlp.vim'
-	Plugin 'Valloric/YouCompleteMe'
 	" General Coding
 	Plugin 'tpope/vim-commentary'
-	Plugin 'scrooloose/syntastic'
 	" Javascript
-	Plugin 'pangloss/vim-javascript'
 	Plugin 'marijnh/tern_for_vim'
 	" Typescript
 	Plugin 'leafgarland/typescript-vim'
-	" Plugin 'Quramy/tsuquyomi'
 call vundle#end()
 filetype plugin indent on
 
@@ -44,9 +38,7 @@ filetype plugin indent on
 " Appearance
 "
 "----------------------------------------------------------
-syntax enable
-set background=light
-colorscheme solarized
+syntax on
 
 "Disable audio bell
 set visualbell
@@ -73,9 +65,9 @@ set smartindent
 
 if has("gui_running")
 	"Use light solarized and make it slightly bigger
-	set background=light
+	set background=dark
 	colorscheme solarized
-	set guifont=Monaco:h12
+	set guifont=Courier\ 10\ Pitch\ 12
 	set linespace=2
 
 	"Turn off GUI features
@@ -177,46 +169,12 @@ cnoremap <C-e> <End>
 augroup web-dev-files
 	autocmd!
 
-	autocmd FileType javascript setlocal omnifunc=tern#Complete
 	autocmd BufRead,BufNewFile *.ts set filetype=typescript
 
 	autocmd Filetype typescript,javascript,html,css set tabstop=2
 	autocmd Filetype typescript,javascript,html,css set softtabstop=2
 	autocmd Filetype typescript,javascript,html,css set shiftwidth=2
 	autocmd Filetype typescript,javascript,html,css set expandtab
-
-
-	" Testing
-	autocmd Filetype typescript,javascript iabbrev reqexp var expect = require('chai').expect;
-	autocmd Filetype typescript,javascript iabbrev desc describe
-
-	" Top of files
-	autocmd Filetype typescript,javascript iabbrev usestrict 'use strict';
-	autocmd Filetype typescript,javascript iabbrev req require
-	autocmd Filetype typescript,javascript iabbrev fun function
-	autocmd Filetype typescript,javascript iabbrev ret return
-	autocmd Filetype typescript,javascript iabbrev clog console.log
-	autocmd Filetype typescript,javascript iabbrev prot prototype
-
-	autocmd Filetype typescript,javascript iabbrev ael addEventListener
-	autocmd Filetype typescript,javascript iabbrev rel removeEventListener
-	autocmd Filetype typescript,javascript iabbrev papply prototype.apply
-	autocmd Filetype typescript,javascript iabbrev pcall prototype.call
-	autocmd Filetype typescript,javascript iabbrev sett setTimeout
-	autocmd Filetype typescript,javascript iabbrev seti setInterval
-	autocmd Filetype typescript,javascript iabbrev ocreate Object.create
-	autocmd Filetype typescript,javascript iabbrev selfthis var self = this;
-	autocmd Filetype typescript,javascript iabbrev bindthis bind(this)
-
-	" Dom
-	autocmd Filetype typescript,javascript iabbrev doc document
-	autocmd Filetype typescript,javascript iabbrev gebi getElementById
-	autocmd Filetype typescript,javascript iabbrev gebc getElementsByClassName
-	autocmd Filetype typescript,javascript iabbrev gebt getElementsByTagName
-	autocmd Filetype typescript,javascript iabbrev ce createElement
-	autocmd Filetype typescript,javascript iabbrev cdf createDocumentFragment
-	autocmd Filetype typescript,javascript iabbrev ac appendChild
-
 augroup end
 
 
@@ -228,20 +186,8 @@ augroup end
 let g:syntastic_javascript_checkers = ['jshint'] "Use JSHint for javascript
 " let g:syntastic_typescript_checkers = ['tslint'] "Use JSHint for javascript
 set statusline+=\ %#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-let g:syntastic_stl_format = '[%e errors - %w warnings]'
-"Don't show list when errors. Hide list when no errors
-let g:syntastic_auto_loc_list = 2
-let g:syntastic_always_populate_loc_list = 1
-"Check on open.
-let g:syntastic_check_on_open = 1
-"Don't check on close
-let g:syntastic_check_on_wq = 0
-"Aggregate errors from all checkers
-let g:syntastic_aggregate_errors = 1
-"Make the location list 5 rows tall
-let g:syntastic_loc_list_height = 5
+
 "Show location list
 nnoremap <leader>c :Errors<cr>
 nnoremap <leader>C :lclose<cr>
@@ -260,8 +206,6 @@ map t <Plug>(easymotion-t)
 map T <Plug>(easymotion-T)
 map <leader>n <Plug>(easymotion-n)
 map <leader>N <Plug>(easymotion-N)
-nmap <Leader>; <Plug>(easymotion-next)
-nmap <Leader>, <Plug>(easymotion-prev)
 
 map <leader>w <Plug>(easymotion-w)
 map <leader>e <Plug>(easymotion-e)
@@ -280,18 +224,3 @@ let g:EasyMotion_smartcase=1
 let g:EasyMotion_use_upper=1
 let g:EasyMotion_keys="ASDGHKLQWERTYUIOPZXCVBNMFJ;"
 let g:EasyMotion_enter_jump_first = 1
-
-if !exists("g:ycm_semantic_triggers")
-	let g:ycm_semantic_triggers = {}
-endif
-let g:ycm_semantic_triggers['typescript'] = ['.']
-let g:ycm_add_preview_to_completeopt=1
-let g:ycm_autoclose_preview_window_after_completion=1
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_key_list_select_completion=[]
-let g:ycm_key_list_previous_completion=[]
-
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsListSnippets="<c-;>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
